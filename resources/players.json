@@ -1,13 +1,13 @@
 [
     {
         "id": 0,
-        "username": "username_example",
+        "username": "Player One",
         "games_played": 10,
         "games_won": 2
     },
     {
         "id": 1,
-        "username": "username_example_2",
+        "username": "Player Two",
         "games_played": 10,
         "games_won": 2
     }

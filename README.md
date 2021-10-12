@@ -1,5 +1,6 @@
 # diceGame
-A game, with dice.
+## A game, with dice.
+-------------
+
 
 Computer Science work.
--------------

@@ -7,8 +7,6 @@ RESOURCES_DIR = BASE_DIR / 'resources'
 with open(RESOURCES_DIR / 'players.json', 'rt') as fp:
     currentPlayerJson = json.loads(fp.read())
 
-# currentPlayerJson = [] # For testing
-
 class Player():
     def __init__(self, player_id: int):
         playerDict = next((item for item in currentPlayerJson if item["id"] == player_id), None)
@@ -123,4 +121,4 @@ def game(player1_id: int, player2_id: int):
         
         currentPlayer = 1 if currentPlayer == 0 else 1
 
-game(0, 1)
+# game(0, 1)

@@ -54,8 +54,7 @@ class Game():
             raise ValueError(
                 f"2 players must be given when intisialising a Game() object, not {len(argv)}")
         elif type(argv[0]) != Player or type(argv[1]) != Player:
-            raise TypeError(
-                f"players pass given when intisialising a Game() object must both be type {Player}, not {type(argv[0])} and {type(argv[1])}")
+            raise TypeError(f"players pass given when intisialising a Game() object must both be type {Player}, not {type(argv[0])} and {type(argv[1])}")
 
         self.players = argv
         self.round = 0

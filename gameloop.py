@@ -96,7 +96,7 @@ class Game():
             print(
                 f"You got {roll_result['dice_results'][0]} and {roll_result['dice_results'][1]} for a total of {roll_result['new_points']}!")
 
-            playAgain = input('Would you like to play again (y/n): ').lower()
+            playAgain = input('Would you like to roll again (y/n): ').lower()
             while playAgain != 'y' and playAgain != 'n':
                 playAgain = input(
                     'Would you like to play again (y/n): ').lower()

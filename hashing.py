@@ -12,4 +12,6 @@ print(ph.check_needs_rehash(hash))
 def hashpassword(password: str):
     return(ph.hash(password + ''.join([secrets.choice('QWERTYUIOPASDFGHJKLZXCVBNM')])))
 
-print(hashpassword('Test'))
+phash = hashpassword(input())
+
+ph.verify(phash['p'], input())

@@ -137,5 +137,4 @@ def game(player1_id: int, player2_id: int):
 
         currentPlayer = 1 if currentPlayer == 0 else 1
 
-
 game(0, 1)

@@ -122,6 +122,7 @@ def game(player1_id: int, player2_id: int):
     input(f'{p1.username} will go first, press enter to start.')
 
     currentPlayer = 0
+
     while True:
         game.round += 1
         if currentPlayer == 1:
@@ -132,9 +133,16 @@ def game(player1_id: int, player2_id: int):
 
         if game.players[currentPlayer].score >= 50:
             print(f"{game.players[currentPlayer].username} won!")
+
             # This will be changed to saving the game to the player's data and returning to the main menu module.
             break
 
         currentPlayer = 1 if currentPlayer == 0 else 1
+    
+    # post1 = post_user(game.players[currentPlayer].id, True)
+    # post2 = post_user(game.players[1 if currentPlayer == 0 else 1].id, False)
+    
+    # if not post1 is True or not post2 is True:
+    #     print("Error saving data.")
 
 game(0, 1)

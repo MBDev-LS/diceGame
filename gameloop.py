@@ -143,7 +143,7 @@ def game(player1_id: int, player2_id: int):
 
             # This will be changed to saving the game to the player's data and returning to the main menu module.
             break
-
+		
         currentPlayer = 1 if currentPlayer == 0 else 1
 
 game(0, 1)

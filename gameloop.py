@@ -1,6 +1,8 @@
 from pathlib import Path
 import json
 
+import UserSystem
+
 BASE_DIR = Path(__file__).resolve().parent
 RESOURCES_DIR = BASE_DIR / 'resources'
 
@@ -135,11 +137,11 @@ def game(player1_id: int, player2_id: int):
 
         if game.players[currentPlayer].score >= 50:
             print(f"{game.players[currentPlayer].username} won!")
-            # post1 = post_user(game.players[currentPlayer].id, True)
-            # post2 = post_user(game.players[1 if currentPlayer == 0 else 1].id, False)
+            post1 = UserSystem.post_user(game.players[currentPlayer].player_id, True)
+            post2 = UserSystem.post_user(game.players[1 if currentPlayer == 0 else 1].player_id, False)
 
-            # if not post1 is True or not post2 is True:
-            #     print("Error saving data.")
+            if not post1 is True or not post2 is True:
+                print("Error saving data.")
 
             # This will be changed to saving the game to the player's data and returning to the main menu module.
             break

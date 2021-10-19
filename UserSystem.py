@@ -11,8 +11,6 @@ with open(RESOURCES_DIR / 'players.json','rt') as fp:
     players = json.loads(fp.read())
 
 def post_user(id: int, won: bool):
-    print(id)
-    print(won)
     with open(RESOURCES_DIR / 'players.json','rt') as fp:
         players = json.loads(fp.read())
     player = next((item for item in players if item["id"] == id), None)
@@ -22,7 +20,6 @@ def post_user(id: int, won: bool):
             player["games_won"] += 1
         with open(RESOURCES_DIR / 'players.json','wt') as fp:
             fp.write(json.dumps(players))
-        print(players, player)
         return True
     return False
 

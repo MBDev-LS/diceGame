@@ -74,7 +74,7 @@ class Game():
 
 		new_points = 0
 
-		print(f"It is now {self.players[player_index].username}'s turn!")
+		print(f"It is now {self.players[player_index].username}'s turn, they start with {self.players[player_index].score} points!")
 
 		while True:
 			input("Press enter to roll!")
@@ -102,42 +102,47 @@ class Game():
 
 
 def game(player1_id: int, player2_id: int):
-    """
-    Takes in two player_ids and completes a game
-    using their infomation stored in the player.json
-    file. Then saves the game's result using the saving
-    module and returns None to theMain Menu file.
-    """
-    p1 = Player(player1_id)
-    p2 = Player(player2_id)
+	"""
+	Takes in two player_ids and completes a game
+	using their infomation stored in the player.json
+	file. Then saves the game's result using the saving
+	module and returns None to theMain Menu file.
+	"""
+	if player1_id == player2_id:
+		print("You played yourself! Oh wait, you can't...")
+		return
+	p1 = Player(player1_id)
+	p2 = Player(player2_id)
 
-    game = Game(p1, p2)
+	game = Game(p1, p2)
 
-    print(f"Welcome to the game, {p1.username} and {p2.username}!")
-    input(f'{p1.username} will go first, press enter to start.')
+	print(f"Welcome to the game, {p1.username} and {p2.username}!")
+	input(f'{p1.username} will go first, press enter to start.')
 
-    currentPlayer = 0
+	currentPlayer = 0
 
-    while True:
-        game.round += 1
-        if currentPlayer == 1:
-            game.user_round += 1
+	while True:
+		game.round += 1
+		if currentPlayer == 1:
+			game.user_round += 1
 
-        print(f"\nWelcome to Round {game.user_round}")
-        game.players[currentPlayer].score = game.start_turn(currentPlayer)
+		print(f"\nWelcome to Round {game.user_round}")
+		# game.players[currentPlayer].score = game.start_turn(currentPlayer)
 
-        if game.players[currentPlayer].score >= 50:
-            print(f"{game.players[currentPlayer].username} won!")
-            post1 = UserSystem.post_user(game.players[currentPlayer].player_id, True)
-            post2 = UserSystem.post_user(game.players[1 if currentPlayer == 0 else 0].player_id, False)
+		if game.players[currentPlayer].score >= 50:
+			print(f"{game.players[currentPlayer].username} won!")
+			post1 = UserSystem.post_user(game.players[currentPlayer].player_id, True)
+			post2 = UserSystem.post_user(game.players[1 if currentPlayer == 0 else 0].player_id, False)
 
-            if not post1 is True or not post2 is True:
-                print("Error saving data.")
+			if not post1 is True or not post2 is True:
+				print("Error saving data.")
 
-            # This will be changed to saving the game to the player's data and returning to the main menu module.
-            break
+			# This will be changed to saving the game to the player's data and returning to the main menu module.
+			break
 		
-        currentPlayer = 1 if currentPlayer == 0 else 1
+		currentPlayer = 1 if currentPlayer == 0 else 0
+		print(currentPlayer)
+		input()
 
 if __name__ == "__main__":
 	game(0, 1)

@@ -2,6 +2,7 @@ from pathlib import Path
 import json
 
 import UserSystem
+import dicesim
 
 BASE_DIR = Path(__file__).resolve().parent
 RESOURCES_DIR = BASE_DIR / 'resources'
@@ -37,17 +38,7 @@ class Player():
 			"double": bool,
 		}
 		"""
-		# return {
-		#     "dice_results": [2, 2],
-		#     "new_points": 0,
-		#     "double": True,
-		# }
-		return {
-			"dice_results": [2, 5],
-			"new_points": 7,
-			"double": False,
-		}
-		# Call dice simulation module.
+		return dicesim.roll()
 
 
 class Game():
@@ -148,4 +139,5 @@ def game(player1_id: int, player2_id: int):
 		
         currentPlayer = 1 if currentPlayer == 0 else 1
 
-game(0, 1)
+if __name__ == "__main__":
+	game(0, 1)

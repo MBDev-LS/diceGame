@@ -27,17 +27,7 @@ def post_user(id: int, won: bool):
         return True
     return False
 
-def create_user(username: str):
-    if not username:
-        return False
-    user_dict = {"id":system["NextID"], "username":username, "games_played":0, "games_won":0}
-    players.append(user_dict)
-    system["NextID"] += 1
-    with open(RESOURCES_DIR / 'players.json','wt') as fp:
-        fp.write(json.dumps(players))
-    with open(RESOURCES_DIR / 'system.json','wt') as fp:
-        fp.write(json.dumps(system))
-    return(user_dict)
+
 
 def get_user(name: str=None, id: int=None, password: bool=False):
     with open(RESOURCES_DIR / 'players.json','rt') as fp:
@@ -47,4 +37,14 @@ def get_user(name: str=None, id: int=None, password: bool=False):
     elif id:
         return next((item for item in players if item["id"] == id), None)
 
-#post_user(1,True)
+def create_user(username: str):
+    if get_user(name=username) is not None:
+        return False
+    user_dict = {"id":system["NextID"], "username":username, "games_played":0, "games_won":0}
+    players.append(user_dict)
+    system["NextID"] += 1
+    with open(RESOURCES_DIR / 'players.json','wt') as fp:
+        fp.write(json.dumps(players))
+    with open(RESOURCES_DIR / 'system.json','wt') as fp:
+        fp.write(json.dumps(system))
+    return(user_dict)

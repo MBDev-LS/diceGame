@@ -138,7 +138,7 @@ def game(player1_id: int, player2_id: int):
         if game.players[currentPlayer].score >= 50:
             print(f"{game.players[currentPlayer].username} won!")
             post1 = UserSystem.post_user(game.players[currentPlayer].player_id, True)
-            post2 = UserSystem.post_user(game.players[1 if currentPlayer == 0 else 1].player_id, False)
+            post2 = UserSystem.post_user(game.players[1 if currentPlayer == 0 else 0].player_id, False)
 
             if not post1 is True or not post2 is True:
                 print("Error saving data.")

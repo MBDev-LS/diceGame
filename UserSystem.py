@@ -11,6 +11,8 @@ with open(RESOURCES_DIR / 'players.json','rt') as fp:
     players = json.loads(fp.read())
 
 def post_user(id: int, won: bool):
+    print(id)
+    print(won)
     with open(RESOURCES_DIR / 'players.json','rt') as fp:
         players = json.loads(fp.read())
     player = next((item for item in players if item["id"] == id), None)
@@ -44,3 +46,5 @@ def get_user(name: str=None, id: int=None, password: bool=False):
         return next((item for item in players if item["username"] == name), None)
     elif id:
         return next((item for item in players if item["id"] == id), None)
+
+#post_user(1,True)

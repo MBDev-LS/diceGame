@@ -127,7 +127,7 @@ def game(player1_id: int, player2_id: int):
 			game.user_round += 1
 
 		print(f"\nWelcome to Round {game.user_round}")
-		# game.players[currentPlayer].score = game.start_turn(currentPlayer)
+		game.players[currentPlayer].score += game.start_turn(currentPlayer)
 
 		if game.players[currentPlayer].score >= 50:
 			print(f"{game.players[currentPlayer].username} won!")
@@ -141,8 +141,6 @@ def game(player1_id: int, player2_id: int):
 			break
 		
 		currentPlayer = 1 if currentPlayer == 0 else 0
-		print(currentPlayer)
-		input()
 
 if __name__ == "__main__":
 	game(0, 1)

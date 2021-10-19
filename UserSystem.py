@@ -16,7 +16,6 @@ def post_user(id: int, won: bool):
     with open(RESOURCES_DIR / 'players.json','rt') as fp:
         players = json.loads(fp.read())
     player = next((item for item in players if item["id"] == id), None)
-    print(players, player)
     if player:
         player["games_played"] += 1
         if won:
@@ -26,8 +25,6 @@ def post_user(id: int, won: bool):
         print(players, player)
         return True
     return False
-
-
 
 def get_user(name: str=None, id: int=None, password: bool=False):
     with open(RESOURCES_DIR / 'players.json','rt') as fp:
